@@ -13,12 +13,13 @@
 @import TwilioVoice;
 
 
-//static NSString *const kYourServerBaseURLString = @"https://c9dev2.cloud9download.com:8080/api/twilio-voice";
+static NSString *const kYourServerBaseURLString = @"https://c9dev2.cloud9download.com:8080/api/twilio-voice";
+
 //static NSString *const kYourServerBaseURLString = @"https://uat.cloud9download.com:8080/api/twilio-voice";
 //static NSString *const kYourServerBaseURLString = @"https://c9demo.cloud9download.com:8080/api/twilio-voice";
 //    static NSString *const kYourServerBaseURLString = @"https://alaska.cloud9download.com:8080/api/twilio-voice";
 
-static NSString *const kYourServerBaseURLString = @"https://mhid.cloud9download.com:8080/api/twilio-voice";
+//static NSString *const kYourServerBaseURLString = @"https://mhid.cloud9download.com:8080/api/twilio-voice";
 
 
 
@@ -472,6 +473,9 @@ withCompletionHandler:(void (^)(void))completion {
     [self stopSpin];
     [self toggleUIState:YES showCallControl:NO];
     [self.placeCallButton setTitle:@"" forState:UIControlStateNormal];
+    [[NSNotificationCenter defaultCenter]
+            postNotificationName:@"disconnectedAudioCall"
+            object:nil];
     [self dismissViewControllerAnimated:true completion:nil];
     
     
